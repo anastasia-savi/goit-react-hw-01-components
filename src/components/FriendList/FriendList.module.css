@@ -17,22 +17,3 @@
   align-items: center;
   margin: 0 5px;
 }
-
-.statusOnline {
-  color: green;
-  margin-left: 5px;
-}
-
-.statusOffline {
-  color: red;
-  margin-left: 5px;
-}
-
-.avatar {
-  border-radius: 25%;
-  border: 1px solid black;
-  margin: 5px;
-}
-
-.name {
-}

@@ -23,11 +23,11 @@ export default Statistics;
 
 Statistics.propTypes = {
   title: PropTypes.string,
-  stat: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      label: PropTypes.number.isRequired,
-      percentage: PropTypes.string.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
     })
   ),
 };

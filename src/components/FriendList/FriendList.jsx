@@ -1,31 +1,18 @@
 import PropTypes from 'prop-types';
 import css from './FriendList.module.css';
-import { HiEmojiHappy } from 'react-icons/hi';
-import { HiEmojiSad } from 'react-icons/hi';
+import FriendListItem from 'components/FriendListItem/FriendListItem';
 
 const FriendList = ({ friends }) => {
   return (
     <ul className={css.friendList}>
-      {friends.map(({ id, avatar, name, isOnline }) => {
+      {friends.map(friend => {
         return (
-          <li className={css.item} key={id}>
-            {isOnline && (
-              <span className={css.statusOnline}>
-                <HiEmojiHappy />
-              </span>
-            )}
-            {!isOnline && (
-              <span className={css.statusOffline}>
-                <HiEmojiSad />
-              </span>
-            )}
-            <img
-              className={css.avatar}
-              src={avatar}
-              alt="User avatar"
-              width="48"
+          <li className={css.item} key={friend.id}>
+            <FriendListItem
+              isOnline={friend.isOnline}
+              avatar={friend.avatar}
+              name={friend.name}
             />
-            <p className={css.name}>{name}</p>
           </li>
         );
       })}
@@ -34,10 +21,11 @@ const FriendList = ({ friends }) => {
 };
 
 FriendList.propTypes = {
-  avatar: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  isOnline: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
+  friends: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default FriendList;
